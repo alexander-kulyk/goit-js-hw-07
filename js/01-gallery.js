@@ -4,13 +4,13 @@ import { galleryItems } from './gallery-items.js';
 // console.log(galleryItems);
 
 const galleryContainer = document.querySelector('.gallery');
-galleryContainer.insertAdjacentHTML('beforeend',createGallaryItemsMarkup(galleryItems));
+galleryContainer.insertAdjacentHTML('beforeend',createGalleryItemsMarkup(galleryItems));
 
 galleryContainer.addEventListener('click',onGalleryImagesClick);
 
 //----Створення розмітки-------------------
 
-function createGallaryItemsMarkup(gallary) {
+function createGalleryItemsMarkup(gallary) {
     
     const gallaryMarkup = gallary.map(({preview, original, description}) =>{
         return`
