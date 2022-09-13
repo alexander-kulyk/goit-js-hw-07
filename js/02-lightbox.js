@@ -22,4 +22,4 @@ function createGalleryItemsMarkup(gallery) {
 
 //---галерея SimpleLightbox---------------
 
-var lightbox = new SimpleLightbox('.gallery .gallery__item', {captionsData:'alt',captionDelay: 250});
+const lightbox = new SimpleLightbox('.gallery .gallery__item', {captionsData:'alt',captionDelay: 250});
