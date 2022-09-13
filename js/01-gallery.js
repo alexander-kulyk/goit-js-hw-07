@@ -34,8 +34,8 @@ function onGalleryImagesClick(evt) {
     //--заборона стандартних дій браузера
     evt.preventDefault();
 
-    //---перевіряю чи елемент має клас gallery__image, якщо ні  - вихожу
-    if (!evt.target.classList.contains('gallery__image')) {
+    //---перевіряю чи є IMG, якщо ні  - вихожу
+    if (evt.target.nodeName !== 'IMG') {
         return; 
     };
     
