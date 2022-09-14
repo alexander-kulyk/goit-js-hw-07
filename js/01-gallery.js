@@ -50,10 +50,20 @@ function onGalleryImagesClick(evt) {
     //-----Закриття модалки-------------
     window.addEventListener('keydown', (evt) =>{
         if (evt.code === 'Escape') {
+            console.log(evt.code);
             instance.close();
+
+            window.removeEventListener('keydown', (evt)=>{});
         };
+       
     });
+
 };
+
+// function OnCloseImage() {
+//     window.removeEventListener('keydown',()=>{} )
+    
+// };
 
 
 
