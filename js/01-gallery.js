@@ -10,22 +10,40 @@ galleryContainer.addEventListener('click',onGalleryImagesClick);
 
 //----Створення розмітки-------------------
 
-function createGalleryItemsMarkup(gallary) {
+function createGalleryItemsMarkup(gallery) {
     
-    const gallaryMarkup = gallary.map(({preview, original, description}) =>{
-        return`
-        <div class="gallery__item">
-        <a class="gallery__link" href="${original}">
-          <img 
-          class="gallery__image"
-          src="${preview}"
-          data-source="${original}" 
-          alt="${description}">
-        </a>
+    // const gallaryMarkup = gallary.map(({preview, original, description}) =>{
+    //     return`
+    //     <div class="gallery__item">
+    //     <a class="gallery__link" href="${original}">
+    //       <img 
+    //       class="gallery__image"
+    //       src="${preview}"
+    //       data-source="${original}" 
+    //       alt="${description}">
+    //     </a>
       
-      </div>`
-    }).join('');
-    return gallaryMarkup;
+    //   </div>`
+    // }).join('');
+
+
+    // інший варіант створення розмітки. Через reduce, не використовуємо .join('')
+
+    const galleryMarkup = gallery.reduce((acc, {preview, original, description}) =>{
+        return acc +`
+         <div class="gallery__item">
+            <a class="gallery__link" href="${original}">
+                <img 
+                class="gallery__image"
+                src="${preview}"
+                data-source="${original}" 
+                alt="${description}">
+            </a>
+      
+        </div>`
+    }, '');
+
+    return galleryMarkup;
 };
 
 
@@ -47,23 +65,21 @@ function onGalleryImagesClick(evt) {
     instance.show();
 
 
-    //-----Закриття модалки-------------
-    window.addEventListener('keydown', (evt) =>{
+    //-----Закриття зображення-------------
+    window.addEventListener('keydown',onEscPress, {once: true});
+
+    function onEscPress(evt) {
         if (evt.code === 'Escape') {
-            console.log(evt.code);
+            
             instance.close();
 
-            window.removeEventListener('keydown', (evt)=>{});
+            //  інший варіант видалити EventListener
+            // window.removeEventListener('keydown',onEscPress);
         };
-       
-    });
+    };
 
 };
 
-// function OnCloseImage() {
-//     window.removeEventListener('keydown',()=>{} )
-    
-// };
 
 
 
